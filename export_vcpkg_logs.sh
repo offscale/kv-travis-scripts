@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -aeuo pipefail
 
 if [[ -z "$TELEGRAM_TOKEN" ]] || [[ -z "$TELEGRAM_CHAT" ]]; then
   echo >&2 "Either TELEGRAM_TOKEN or TELEGRAM_CHAT not set."

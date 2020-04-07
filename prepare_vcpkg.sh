@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -aeuo pipefail
 
 DIR="$1"
 BOOT_CODE="$2"

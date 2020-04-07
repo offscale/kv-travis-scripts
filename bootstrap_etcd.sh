@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -aeuo pipefail
 
 TRIPLET="$1"'-amd64'
 EXT="$2"

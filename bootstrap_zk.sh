@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -aeuo pipefail
 
 EXT='tar.gz'
 ZK-VERSION='3.5.5'

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -aeuo pipefail
 
 TRIPLET="$1"'_amd64'
 EXT='zip'
