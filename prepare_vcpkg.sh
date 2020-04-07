@@ -13,7 +13,7 @@ if [[ ! -d "$DIR" ]]; then
 	mkdir -p $(dirname "$DIR")
 	git clone 'https://github.com/Microsoft/vcpkg' --depth=20 "$DIR"
 	cd "$DIR"
-	return "$BOOT_CODE"
+	exit "$BOOT_CODE"
 else
 	cd "$DIR"
 	git reset --hard HEAD
