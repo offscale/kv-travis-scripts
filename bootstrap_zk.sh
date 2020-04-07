@@ -3,14 +3,15 @@
 set -aeuo pipefail
 
 EXT='tar.gz'
-ZK-VERSION='3.5.5'
-curl -L 'https://archive.apache.org/dist/zookeeper/zookeeper-'"$ZK_VERSION"'/apache-zookeeper-'"$ZK_VERSION"'-bin.'"${EXT}" -o "$HOME"'/zk.'"${EXT}"
+ZK_VERSION="${ZK_VERSION-3.5.5}"
+DOWNLOAD_DIR="${DOWNLOAD_DIR-$HOME/Downloads}"
+INSTALL_DIR="${INSTALL_DIR-$HOME/bin/zk}"
+curl -L 'https://archive.apache.org/dist/zookeeper/zookeeper-'"$ZK_VERSION"'/apache-zookeeper-'"$ZK_VERSION"'-bin.'"${EXT}" -o "$DOWNLOAD_DIR"'/zk.'"${EXT}"
 
-mkdir -p "$HOME"'/zk'
-tar xzf "$HOME"'/zk.'"${EXT}" -C "$HOME"'/zk' --strip-components=1
+mkdir -p "$INSTALL_DIR"
+tar xzf "$DOWNLOAD_DIR"'/zk.'"${EXT}" -C "$INSTALL_DIR" --strip-components=1
 
-rm -f "$HOME"'/zk.'"${EXT}"
-cd "$HOME"'/zk'
+pushd "$INSTALL_DIR"
 
 echo "tickTime=2000
 dataDir=$HOME/zk/data_

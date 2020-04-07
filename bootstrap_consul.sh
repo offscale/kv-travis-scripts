@@ -4,13 +4,14 @@ set -aeuo pipefail
 
 TRIPLET="$1"'_amd64'
 EXT='zip'
-CONSUL_VERSION='1.5.1'
-curl -L 'https://releases.hashicorp.com/consul/'"$CONSUL_VERSION"'/consul_'"$CONSUL_VERSION"'_'"${TRIPLET}"'.'"${EXT}" -o ~'/consul.'"${EXT}"
+CONSUL_VERSION="${CONSUL_VERSION-1.5.1}"
+DOWNLOAD_DIR="${DOWNLOAD_DIR-$HOME/Downloads}"
+INSTALL_DIR="${INSTALL_DIR-$HOME/bin/consul}"
+curl -L 'https://releases.hashicorp.com/consul/'"$CONSUL_VERSION"'/consul_'"$CONSUL_VERSION"'_'"${TRIPLET}"'.'"${EXT}" -o "$DOWNLOAD_DIR"'/consul.'"${EXT}"
 
-mkdir -p ~'/consul'
-unzip -q ~'/consul.'"${EXT}" -d ~'/consul'
+mkdir -p "$INSTALL_DIR"
+unzip -q "$DOWNLOAD_DIR"'/consul.'"${EXT}" -d "$INSTALL_DIR"
 
-rm -f ~'/consul.'"${EXT}"
-cd ~'/consul'
+pushd "$INSTALL_DIR"
 
 ./consul agent -dev > /dev/null &

@@ -3,8 +3,8 @@
 set -aeuo pipefail
 
 if [[ -z "$TELEGRAM_TOKEN" ]] || [[ -z "$TELEGRAM_CHAT" ]]; then
-  echo >&2 "Either TELEGRAM_TOKEN or TELEGRAM_CHAT not set."
-  exit 1
+	echo >&2 "Either TELEGRAM_TOKEN or TELEGRAM_CHAT not set."
+	exit 1
 fi
 
 cd "$HOME"
