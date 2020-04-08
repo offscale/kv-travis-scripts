@@ -3,7 +3,7 @@
 set -xaeuo pipefail
 
 declare -r DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-. "${DIR%/*}/set_globals.bash"
+. "${DIR%/*}/shared.bash"
 
 declare -r TRIPLET="$1"'-amd64'
 declare -r EXT="$2"
