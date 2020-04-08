@@ -2,11 +2,11 @@
 
 set -aeuo pipefail
 
-EXT='tar.gz'
-ZK_VERSION="${ZK_VERSION-3.5.5}"
-DOWNLOAD_DIR="${DOWNLOAD_DIR-$HOME/Downloads}"
-INSTALL_DIR="${INSTALL_DIR-$HOME/bin/zk}"
-ARCHIVE='apache-zookeeper-'"$ZK_VERSION"'-bin.'"${EXT}"
+declare -r EXT='tar.gz'
+declare -r ZK_VERSION="${ZK_VERSION-3.5.5}"
+declare -r DOWNLOAD_DIR="${DOWNLOAD_DIR-$HOME/Downloads}"
+declare -r INSTALL_DIR="${INSTALL_DIR-$HOME/bin/zk}"
+declare -r ARCHIVE='apache-zookeeper-'"$ZK_VERSION"'-bin.'"${EXT}"
 
 mkdir -p "$DOWNLOAD_DIR" "$INSTALL_DIR"
 curl -L 'https://archive.apache.org/dist/zookeeper/zookeeper-'"$ZK_VERSION"'/'"$ARCHIVE" -o "$DOWNLOAD_DIR"'/'"$ARCHIVE"

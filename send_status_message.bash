@@ -7,17 +7,17 @@ if [[ -z "$TELEGRAM_TOKEN" ]] || [[ -z "$TELEGRAM_CHAT" ]]; then
 	exit 1
 fi
 
-cd "$HOME"
+pushd "$HOME"
 
 if [[ "$TRAVIS_TEST_RESULT" == "0" ]]; then
 	# success
-MESSAGE="*Success:* ${TRAVIS_JOB_WEB_URL}
+declare -r MESSAGE="*Success:* ${TRAVIS_JOB_WEB_URL}
 *Commit*: _${TRAVIS_COMMIT_MESSAGE}_ into \`${TRAVIS_BRANCH}\`
 *System*: \`${TRAVIS_OS_NAME}\`"
 
 else
 	#failure
-MESSAGE="*Failure:* ${TRAVIS_JOB_WEB_URL}
+declare -r MESSAGE="*Failure:* ${TRAVIS_JOB_WEB_URL}
 *Commit*: _${TRAVIS_COMMIT_MESSAGE}_ into \`${TRAVIS_BRANCH}\`
 *System*: \`${TRAVIS_OS_NAME}\`"
 
