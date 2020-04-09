@@ -9,9 +9,12 @@ declare -r INSTALL_DIR="${INSTALL_DIR-$HOME/bin/zk}"
 declare -r ARCHIVE='apache-zookeeper-'"$ZK_VERSION"'-bin.'"${EXT}"
 
 mkdir -p "$DOWNLOAD_DIR" "$INSTALL_DIR"
-curl -L 'https://archive.apache.org/dist/zookeeper/zookeeper-'"$ZK_VERSION"'/'"$ARCHIVE" -o "$DOWNLOAD_DIR"'/'"$ARCHIVE"
+pushd "$DOWNLOAD_DIR"
+
+curl -L 'https://archive.apache.org/dist/zookeeper/zookeeper-'"$ZK_VERSION"'/'"$ARCHIVE" -o "$ARCHIVE"
 tar xzf "$ARCHIVE" -C "$INSTALL_DIR" --strip-components=1
 
+popd
 pushd "$INSTALL_DIR"
 
 ls -alR "$HOME/zk"

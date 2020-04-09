@@ -13,7 +13,8 @@ declare -r INSTALL_DIR="${INSTALL_DIR-$HOME/bin/etcd}"
 declare -r ARCHIVE='etcd-v'"$ETCD_VERSION"'-'"${TRIPLET}"'.'"${EXT}"
 
 mkdir -p "$DOWNLOAD_DIR" "$INSTALL_DIR"
-curl -L 'https://storage.googleapis.com/etcd/v'"$ETCD_VERSION"'/'"$ARCHIVE" -o "$DOWNLOAD_DIR"'/'"$ARCHIVE"
+pushd "$DOWNLOAD_DIR"
+curl -L 'https://storage.googleapis.com/etcd/v'"$ETCD_VERSION"'/'"$ARCHIVE" -o "$ARCHIVE"
 
 case "$EXT" in
   'tar.gz')
@@ -27,8 +28,8 @@ case "$EXT" in
     ;;
 esac
 
+popd
 pushd "$INSTALL_DIR"
-ls -alR
 
 mkdir '_data'
 ./etcd --data-dir "$PWD"'/_data' > /dev/null &

@@ -13,8 +13,9 @@ declare -r INSTALL_DIR="${INSTALL_DIR-$HOME/bin/consul}"
 declare -r ARCHIVE='consul_'"$CONSUL_VERSION"'_'"${TRIPLET}"'.'"${EXT}"
 
 mkdir -p "$DOWNLOAD_DIR" "$INSTALL_DIR"
-curl -L 'https://releases.hashicorp.com/consul/'"$CONSUL_VERSION"'/'"$ARCHIVE" -o "$DOWNLOAD_DIR"'/'"$ARCHIVE"
+pushd "$DOWNLOAD_DIR"
 
+curl -L 'https://releases.hashicorp.com/consul/'"$CONSUL_VERSION"'/'"$ARCHIVE" -o "$ARCHIVE"
 unzip-strip "$ARCHIVE" "$INSTALL_DIR"
 
 pushd "$INSTALL_DIR"
