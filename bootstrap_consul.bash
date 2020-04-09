@@ -16,7 +16,7 @@ mkdir -p "$DOWNLOAD_DIR" "$INSTALL_DIR"
 pushd "$DOWNLOAD_DIR"
 
 curl -L 'https://releases.hashicorp.com/consul/'"$CONSUL_VERSION"'/'"$ARCHIVE" -o "$ARCHIVE"
-unzip-strip "$ARCHIVE" "$INSTALL_DIR"
+unzip "$ARCHIVE" -d "$INSTALL_DIR"
 
 pushd "$INSTALL_DIR"
 
