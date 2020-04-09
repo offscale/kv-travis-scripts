@@ -3,7 +3,7 @@
 set -aeuo pipefail
 
 declare -r DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-. "${DIR%/*}/shared.bash"
+. "$DIR"'/shared.bash'
 
 declare -r TRIPLET="$1"'_amd64'
 declare -r EXT='zip'

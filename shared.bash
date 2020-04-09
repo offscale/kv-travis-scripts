@@ -1,4 +1,6 @@
-#!/usr/bin/env bash -euo pipefail
+#!/usr/bin/env bash
+
+set -aeuo pipefail
 
 # From https://superuser.com/a/573624
 unzip-strip() {
