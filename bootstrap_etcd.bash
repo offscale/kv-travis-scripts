@@ -14,7 +14,7 @@ declare -r ARCHIVE='etcd-v'"$ETCD_VERSION"'-'"${TRIPLET}"'.'"${EXT}"
 
 mkdir -p "$DOWNLOAD_DIR" "$INSTALL_DIR"
 pushd "$DOWNLOAD_DIR"
-curl -L 'https://storage.googleapis.com/etcd/v'"$ETCD_VERSION"'/'"$ARCHIVE" -o "$ARCHIVE"
+[ -s "$ARCHIVE" ] || curl -L 'https://storage.googleapis.com/etcd/v'"$ETCD_VERSION"'/'"$ARCHIVE" -o "$ARCHIVE"
 
 case "$EXT" in
   'tar.gz')
