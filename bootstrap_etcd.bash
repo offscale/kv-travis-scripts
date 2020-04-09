@@ -32,4 +32,4 @@ popd
 pushd "$INSTALL_DIR"
 
 mkdir '_data'
-./etcd --data-dir "$PWD"'/_data' > /dev/null &
+env -i PWD="$PWD" ./etcd --data-dir "$PWD"'/_data' > /dev/null &
