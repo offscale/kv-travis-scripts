@@ -7,7 +7,7 @@ declare -r DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 declare -r TRIPLET="$1"'-amd64'
 declare -r EXT="$2"
-declare -r ETCD_VERSION="${ETCD_VERSION-3.3.13}"
+declare -r ETCD_VERSION="${ETCD_VERSION-3.4.13}"
 declare -r DOWNLOAD_DIR="${DOWNLOAD_DIR-$HOME/Downloads}"
 declare -r INSTALL_DIR="${INSTALL_DIR-$HOME/bin/etcd}"
 declare -r ARCHIVE='etcd-v'"$ETCD_VERSION"'-'"${TRIPLET}"'.'"${EXT}"
@@ -32,4 +32,4 @@ popd
 pushd "$INSTALL_DIR"
 
 mkdir '_data'
-env -i PWD="$PWD" ./etcd --data-dir "$PWD"'/_data' > /dev/null &
+env -i DATA_DIR="$PWD"'/_data' ./etcd --data-dir "$DATA_DIR" > /dev/null &
